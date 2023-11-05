@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+
+    <style>
+        body{background-color: #546A7B; font-family: Verdana, Geneva, Tahoma, sans-serif;}
+        h1{color: #393D3F;}
+        .container
+            {max-width: 500px; margin: 100px auto; 
+            box-shadow: 0 0 20px, rgba(0, 0, 0, 0.2); 
+            padding: 20px; background-color: #FDFDFF;}
+        label{color: #62929E; padding: 5px;}
+        button
+            {background-color: #62929E; color: #FDFDFF; 
+            margin: 10px; font-size: 15px; 
+            border-radius: 8px; width: 80px}
+    </style>
+
+    <body>
+        <div class="container">
+            <form id="myForm" style="display: grid; padding: 30px;">
+                <h1>Form with Validation</h1>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="class">Class:</label>
+                <input type="text" id="class" name="class" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <script >
+            const form = document.getElementById('myForm');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                if (!nameInput.value.trim()) 
+                {
+                    alert('Name is required');
+                    return;
+                }
+                if (!emailInput.value.trim()) 
+                {
+                    alert('Email is required');
+                    return;
+                }
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                if (confirm(`Name: ${name}\nEmail: ${email}\n\nDo you want to proceed?`)) 
+                {
+                    const userText = prompt('Please enter "Hello" to confirm:');
+                    if (userText=='Hello') {
+                        alert(`Thank You`);
+                        form.reset();
+                    } else {
+                        alert('Not hello. Text entry was canceled.');
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
