@@ -1,0 +1,9 @@
+GET http://localhost:3000/subscribers
+###
+
+POST http://localhost:3000/subscribers
+
+{
+    "name": "Rahul Singh",
+    "subscribedToChannel": "Web Dev Simplified"
+}
